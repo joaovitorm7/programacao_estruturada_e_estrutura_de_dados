@@ -120,11 +120,15 @@ for i in data:
 print('Faltaram no dia {}'.format(contFaltaram))
 
 #Qual aluno registrou presença em mais de um menu no dia 2024-04-10?
-contPresenca = 0
-for i in data:
-    if i['WASPRESENT'] == 1 and i['STUDENT_ID']  == 2153:
-        contPresenca += 1
-print('{} alunos que resgistaram mais de uma vez'.format(contPresenca))
+from collections import defaultdict
+students_menus = defaultdict(set)
+
+for record in data:
+    if record['WASPRESENT'] == 1:
+        students_menus[record['STUDENT_ID']].add(record['MENU_ID'])
+
+students_with_multiple_menus = {student_id: menus for student_id, menus in students_menus.items() if len(menus) > 1}
+print(students_with_multiple_menus)
 
 #Quantos menus diferentes o aluno com STUDENT_ID 2153 registrou presença no dia 2024-04-10?
 contDiferentes = 0
