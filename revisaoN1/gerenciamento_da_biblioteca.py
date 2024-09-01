@@ -18,8 +18,8 @@ livros = {
 }
 
 #Qual é o título do livro com ID 112?
-livro_112 = livros[112]
-livro_titulo = livro_112["titulo"]
+livro112 = livros[112]
+livro_titulo = livro112["titulo"]
 print('Esse é o título do livro com ID 112: {}'.format(livro_titulo))
 
 #Liste todos os títulos dos livros escritos por José de Alencar.
@@ -61,6 +61,7 @@ for livroId, livroDetalhes in livros.items():
         livroMaisAntigo = livroId
 
 print("ID do livro mais antigo:", livroMaisAntigo)
+
 anoDoLivroMaisAntigo = livros[livroMaisAntigo]["ano"]
 print("Ano de publicação do livro mais antigo:", anoDoLivroMaisAntigo)
 
