@@ -20,45 +20,42 @@ livros = {
 #Qual é o título do livro com ID 112?
 livro112 = livros[112]
 livro_titulo = livro112["titulo"]
-print('Esse é o título do livro com ID 112: {}'.format(livro_titulo))
+print(f'Esse é o título do livro com ID 112: {livro_titulo} ')
 
 #Liste todos os títulos dos livros escritos por José de Alencar.
-joseDeAlencar = []
-
-for livroId, livroDetalhes in livros.items():
-    if livroDetalhes["autor"] == "José de Alencar":
-        joseDeAlencar.append(livroDetalhes["titulo"])
-
-print('Os livros são: {}'.format(joseDeAlencar))
+print("OS LIVROS SÃO:")
+for chave in livros:
+    valor = livros[chave]
+    if valor["autor"] == "José de Alencar":
+        print(valor["titulo"])
 
 #Encontre o livro mais recente (ou seja, com o ano de publicação mais alto).
-anoMaisRecente = -1
+anoMaisRecente = 0
 livroMaisRecente = None
 
-for livroId, livroDetalhes in livros.items():
-    if livroDetalhes["ano"] > anoMaisRecente:
-        anoMaisRecente = livroDetalhes["ano"]
-        livroMaisRecente = livroDetalhes
-
-print("Livro mais recente:")
-print("Título:", livroMaisRecente["titulo"])
-print("Autor:", livroMaisRecente["autor"])
-print("Ano de publicação:", livroMaisRecente["ano"])
+for id in livros:
+    livro = livros[id]
+    if livro["ano"] > anoMaisRecente:
+        anoMaisRecente = livro["ano"]
+        livroMaisRecente = livro["titulo"]
+print(f"O livro mais recente é '{livroMaisRecente}', publicado em {anoMaisRecente}.")
 
 #Quantos livros foram publicados antes de 1880?
 cont = 0
-for livroId, livroDetalhes in livros.items():
-    if livroDetalhes["ano"] < 1880:
+for id in livros:
+    livro = livros[id]
+    if livro["ano"] < 1880:
         cont += 1
-print('Números de livros publicados antes de 1880: {}'.format(cont))
+print(f'Números de livros publicados antes de 1880: {cont}')
 
 #Qual é o ID do livro mais antigo (ou seja, com o ano de publicação mais baixo)?
-anoMaisAntigo = float('inf')
+anoMaisAntigo = 2050
 livroMaisAntigo = None
-for livroId, livroDetalhes in livros.items():
-    if livroDetalhes["ano"] < anoMaisAntigo:
-        anoMaisAntigo = livroDetalhes["ano"]
-        livroMaisAntigo = livroId
+for id in livros:
+    livro = livros[id]
+    if livro["ano"] < anoMaisAntigo:
+        anoMaisAntigo = livro["ano"]
+        livroMaisAntigo = id
 
 print("ID do livro mais antigo:", livroMaisAntigo)
 
@@ -68,13 +65,14 @@ print("Ano de publicação do livro mais antigo:", anoDoLivroMaisAntigo)
 #Crie um novo dicionário contendo apenas os livros publicados depois do ano 1880 e com seus respectivos títulos e autores.
 novosLivros = {}
 
-for livroId, livroDetalhes in livros.items():
-    if livroDetalhes["ano"] > 1880:
-        novosLivros[livroId] = {
-            "titulo": livroDetalhes["titulo"],
-            "autor": livroDetalhes["autor"],
-            "ano": livroDetalhes["ano"]
+for id in livros:
+    livro = livros[id]
+    if livro["ano"] > 1880:
+        novosLivros[id] = {
+            "titulo": livro["titulo"],
+            "autor": livro["autor"],
+            "ano": livro["ano"]
         }
 print("Livros publicados após 1880:")
-for livroId, livroDetalhes in novosLivros.items():
-     print("ID: {}, Título: {}, Autor: {}, Ano: {}".format(livroId, livroDetalhes['titulo'], livroDetalhes['autor'], livroDetalhes['ano']))
+print(novosLivros)
+
