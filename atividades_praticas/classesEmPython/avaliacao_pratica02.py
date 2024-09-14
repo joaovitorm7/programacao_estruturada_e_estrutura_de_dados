@@ -125,6 +125,5 @@ class SistemaAtendimentos:
                 print("Opção inválida. Tente novamente.")
 
 
-# Execução do programa
 sistema = SistemaAtendimentos()
 sistema.menu()
