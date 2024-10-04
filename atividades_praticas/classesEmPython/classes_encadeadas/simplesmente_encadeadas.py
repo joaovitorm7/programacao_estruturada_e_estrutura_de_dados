@@ -37,7 +37,11 @@ class LinkedList:
         
     ##def remove(self, data):
         
-    ##def remove_at_beginning(self):
+    def remove_at_beginning(self):
+        if self.head:
+           old_head = self.head
+           self.head = self.head.next
+           self.head.next = None
 
     def display(self):
         current = self.head
